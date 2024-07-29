@@ -1,8 +1,11 @@
+Sure, here's a unified `README.md` file for your Real-Time Device Tracker project:
+
+```markdown
 # Real-Time Device Tracker
 
 ## Overview
 
-Real-Time Device Tracker is a dynamic application built with Node.js, Express, Socket.IO, and Leaflet that tracks and visualizes the locations of devices on a map in real time. It’s designed to provide a seamless experience for monitoring multiple devices and displaying their locations with live updates.
+Real-Time Device Tracker is a dynamic application built with Node.js, Express, Socket.IO, and Leaflet that tracks and visualizes the locations of devices on a map in real-time. It’s designed to provide a seamless experience for monitoring multiple devices and displaying their locations with live updates.
 
 ## Features
 
@@ -31,5 +34,63 @@ Real-Time Device Tracker is a dynamic application built with Node.js, Express, S
 1. **Clone the Repository**
 
    ```bash
-   git clone https://github.com/username/repository-name.git
-   cd repository-name
+   git clone https://github.com/jangirsamarth/Real-Time-Device-Tracker.git
+   cd Real-Time-Device-Tracker
+   ```
+
+2. **Install Dependencies**
+
+   ```bash
+   npm install
+   ```
+
+3. **Create Environment File**
+
+   Create a `.env` file in the root directory and add the following line:
+
+   ```env
+   MONGO_URI=<Your MongoDB URI>
+   ```
+
+4. **Start the Server**
+
+   ```bash
+   npm start
+   ```
+
+5. **Access the Application**
+
+   Open your browser and visit [http://localhost:3000](http://localhost:3000) to view the application.
+
+## Usage
+
+After starting the server, you can:
+
+- **Log In**: Access the login page and enter your credentials.
+- **Track Devices**: Once logged in, the real-time location of devices will be displayed on the map.
+
+## Screenshots
+
+_(Add screenshots of your application here)_
+
+## Contributing
+
+We welcome contributions to this project! If you have any ideas or improvements, please fork the repository and submit a pull request.
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## Author
+
+Samarth Jangir
+
+Feel free to ⭐ this repository if you like it!
+
+## Connect with me:
+
+- [LinkedIn](https://www.linkedin.com/in/samarth-jangir)
+- [GitHub](https://github.com/jangirsamarth)
+```
+
+You can adjust the repository link, add any screenshots, and update other details as needed.
