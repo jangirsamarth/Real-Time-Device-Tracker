@@ -1,6 +1,4 @@
-Sure, here's a unified `README.md` file for your Real-Time Device Tracker project:
 
-```markdown
 # Real-Time Device Tracker
 
 ## Overview
