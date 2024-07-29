@@ -1,12 +1,11 @@
 const socket = io();
 
-// Flag to track if the map has already been centered
-let hasCentered = false;
-
+// Watch the user's position and send updates
 if (navigator.geolocation) {
     navigator.geolocation.watchPosition(
         (position) => {
             const { latitude, longitude } = position.coords;
+            console.log(`Sending location: Latitude: ${latitude}, Longitude: ${longitude}`); // Debugging line
             socket.emit("send-location", { latitude, longitude });
         },
         (error) => {
@@ -23,36 +22,32 @@ if (navigator.geolocation) {
 // Initialize the map and assign it to a variable
 const map = L.map("map").setView([0, 0], 10);
 
-// Use the correct capitalization for Leaflet's tileLayer function and add it to the map
 L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-    attribution: "Map data © OpenStreetMap contributors"
+    attribution: "sam"
 }).addTo(map);
 
 // Store markers for each user
 const markers = {};
 
-socket.on("receive-location", (data) => {
-    const { id, latitude, longitude } = data;
+// Variable to check if the map has been centered
+let isMapCentered = false;
 
-    if (!markers[id]) {
+socket.on("receive-location", (data) => {
+    const { userId, latitude, longitude } = data;
+
+    console.log(`Received location: UserId: ${userId}, Latitude: ${latitude}, Longitude: ${longitude}`); // Debugging line
+
+    if (!markers[userId]) {
         // Create a new marker if it doesn't exist
-        markers[id] = L.marker([latitude, longitude]).addTo(map);
+        markers[userId] = L.marker([latitude, longitude]).addTo(map);
     } else {
         // Update the existing marker's position
-        markers[id].setLatLng([latitude, longitude]);
+        markers[userId].setLatLng([latitude, longitude]);
     }
 
-    // Center the map on the latest location only if it hasn't been centered yet
-    if (!hasCentered) {
+    // Auto-center the map on the first device
+    if (!isMapCentered) {
         map.setView([latitude, longitude], 10);
-        hasCentered = true;  // Set flag to true to prevent further auto-centering
-    }
-});
-
-// Remove marker on disconnect
-socket.on('remove-marker', (id) => {
-    if (markers[id]) {
-        map.removeLayer(markers[id]);
-        delete markers[id];
+        isMapCentered = true;
     }
 });
