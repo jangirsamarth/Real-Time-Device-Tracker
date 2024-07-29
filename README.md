@@ -69,7 +69,8 @@ After starting the server, you can:
 
 ## Screenshots
 
-_(Add screenshots of your application here)_
+![image](https://github.com/user-attachments/assets/f40e37ab-341c-4476-9b51-1b855068df7b)
+
 
 ## Contributing
 
